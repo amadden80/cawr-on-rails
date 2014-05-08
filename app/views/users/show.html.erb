@@ -1,0 +1,42 @@
+<div class='cawr-action-bar'>
+  <a href="/users">
+    Home
+  </a>
+
+  <h2 class='caw_message'>
+    "<%= @welcome_message %>"
+  </h2>
+
+</div>
+
+
+<h1>
+  <%= @user.username %>
+  <a href="/users/<%= @user.id %>/edit">
+    (edit)
+  </a>
+</h1>
+
+
+<form action="/users/<%= @user.id %>/caws" method='post'>
+  <%= token_tag %>
+  <input type="text" name='caw[message]' placeholder='...caw here'>
+  <input type="submit">
+</form>
+
+
+<ul>
+  <% @user.caws.each do |caw| %>
+    <li>
+      <%= caw.message %>
+      <form class='caw-delete-form' action="/users/<%= @user.id %>/caws/<%= caw.id %>" method='post'>
+        <%= token_tag %>
+        <input type="hidden" name='_method' value='delete'>
+        <button type='submit'>Del</button>
+      </form>
+    </li>
+  <% end %>
+</ul>
+
+
+

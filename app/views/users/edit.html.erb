@@ -1,0 +1,8 @@
+<h2>Prepare to Caw Again</h2>
+
+<form action="/users/<%= @user.id %>" method='post'>
+  <%= token_tag %>
+  <input type="text" name='user[username]' value='<%= @user.username %>'>
+  <input type="hidden" name='_method' value='put'>
+  <input type="submit">
+</form>
