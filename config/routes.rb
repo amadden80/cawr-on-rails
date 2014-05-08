@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'welcome#index'
+  root 'users#index'
 
   resources :users do
     resources :caws, only: [:create, :destroy]
